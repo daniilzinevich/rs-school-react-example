@@ -20,13 +20,13 @@ function App() {
   const [posts, setPosts] = React.useState([]);
   React.useEffect(() => {
     setInterval(() => {
-      const count = 3 + getRandomInt(13);
+      const count = getRandomInt(3);
       const members = getRandomInt(3);
-      const result = () =>
-        (Array.apply(null, {length: count}).map(
+      const result = (posts) =>
+        ([...posts, ...Array.apply(null, {length: count}).map(
           (_, index) => ({author: Names[index % members], message: Messages[getRandomInt(5)]})
-        ));
-      setPosts(result());
+        )]);
+      setPosts(oldPosts => result(oldPosts));
     }, 2000);
   }, []);
 
