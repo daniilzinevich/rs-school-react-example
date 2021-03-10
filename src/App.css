@@ -17,10 +17,9 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
@@ -35,4 +34,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Post {
+  background-color: #ffffff;
+  color: #000000;
+  width: 500px;
+  text-align: start;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.Post .Message {
+  color: #282c34;
+  font-size: 1.3em;
+}
+
+.Counter {
+  color: #a1a1a1;
+  width: 100%;
+  text-align: end;
 }
