@@ -10,4 +10,4 @@ const Post = ({ author, message }) => {
   </div>;
 };
 
-export default Post;
+export default React.memo(Post);
