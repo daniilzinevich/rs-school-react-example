@@ -1,6 +1,6 @@
 import React from 'react';
 import Feed from './components/Feed';
-import FeedPure from './components/FeedPure';
+import FeedPure from './components/FeedFC';
 import './App.css';
 
 function getRandomInt(max) {
