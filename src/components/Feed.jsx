@@ -1,7 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Post from './Post';
 
-export default class Feed extends React.Component {
+class Feed extends React.Component {
   constructor(props) {
     super(props);
     this.counter = 0;
@@ -15,3 +16,9 @@ export default class Feed extends React.Component {
     </div>;
   }
 };
+
+function mapStateToProps(state) {
+  return { posts: state.posts }
+}
+
+export default connect(mapStateToProps)(Feed);
