@@ -1,13 +1,31 @@
-import React from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 
-let counter = 0;
+import usePostWrapper from './PostWrapperFC'
+
 const Post = ({ author, message }) => {
-  counter++;
+  const [read, setRead]  = useState(false);
+  const name = usePostWrapper(author);
+  const handleRead = useCallback(() => {
+    setRead(true);
+  },
+  [read]);
+  
+  useEffect(
+    () => {
+      console.log('this happens once');
+      return () => {
+        console.log('this also happens once');
+      }
+    },
+    []
+  )
+  console.log('render');
+
   return <div className="Post">
-    <div>{author}</div>
+    <div>{name}</div>
     <p className="Message">{message}</p>
-    <div className="Counter">{counter}</div>
+    {!read && <button onClick={handleRead}>Mark as read</button>}
   </div>;
 };
 
-export default React.memo(Post);
+export default Post;

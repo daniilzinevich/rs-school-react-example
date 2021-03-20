@@ -1,15 +1,16 @@
 import React from 'react';
+// import PostWrapper from './PostWrapper';
 
-export default class Post extends React.Component {
+class Post extends React.Component {
   constructor(props) {
     super(props);
     this.counter = 0;
   };
-
+  
   shouldComponentUpdate(nextProps) {
     return !(this.props.author === nextProps.author && this.props.message === nextProps.message);
   }
-
+  
   render() {
     this.counter++;
     return <div className="Post">
@@ -19,3 +20,6 @@ export default class Post extends React.Component {
     </div>;
   }
 };
+
+// export default PostWrapper(Post);
+export default Post;

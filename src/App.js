@@ -7,7 +7,8 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-const Names = ["Dmitry G", "Anton E", "Eugene S"];
+// const Names = ["Dmitry G", "Anton E", "Eugene S"];
+const Names = ["/users/dmitry_g", "/users/anton_e", "/users/eugene_s"];
 const Messages = [
   "Hello, world",
   "Hello, Dima",
@@ -19,7 +20,7 @@ const Messages = [
 function App() {
   const [posts, setPosts] = React.useState([]);
   React.useEffect(() => {
-    setInterval(() => {
+    // setInterval(() => {
       const count = getRandomInt(3);
       const members = getRandomInt(3);
       const result = (posts) =>
@@ -27,14 +28,14 @@ function App() {
           (_, index) => ({author: Names[index % members], message: Messages[getRandomInt(5)]})
         )]);
       setPosts(oldPosts => result(oldPosts));
-    }, 2000);
+    // }, 2000);
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <Feed posts={posts} />
         <FeedPure posts={posts} />
+        {/* <Messages messages={messages} /> */}
       </header>
     </div>
   );
