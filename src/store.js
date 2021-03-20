@@ -26,20 +26,26 @@ const initialState = {
 };
 
 export const actions = {
-  createMessage: (author, text) => {
-    return { type: 'CREATE_MESSAGE', payload: { author, text } }
+  createMessage: (author, message) => {
+    return { type: 'CREATE_MESSAGE', payload: { author, message } }
   },
-  createPost: (author, text) => {
-    return { type: 'CREATE_POST', payload: { author, text } }
+  createPost: (author, message) => {
+    return { type: 'CREATE_POST', payload: { author, message } }
   },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CREATE_MESSAGE':
-      return state;
+      return {
+        ...state,
+        messages: [...state.messages, action.payload],
+      };
     case 'CREATE_POST':
-      return state;
+      return {
+        ...state,
+        posts: [action.payload, ...state.posts],
+      };
     default:
       return state;
   }
