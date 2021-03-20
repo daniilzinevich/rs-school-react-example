@@ -19,6 +19,14 @@ const Chat = () => {
     {messages.map(
       (message, index) => (<Message key={index} {...message} />)
     )}
+    <input className="Input" type="text" placeholder="Type message here"
+      onKeyPress={(event) => {
+        if (event.charCode===13) {
+          createMessage('Daniil', event.target.value);
+          event.target.value = '';
+        }
+      }}
+    />
   </div>;
 };
 

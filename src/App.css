@@ -78,3 +78,14 @@
   font-weight: normal;
   padding: 1em;
 }
+
+.Input {
+  width: 80%;
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 1em;
+}
+
+.Input:focus {
+  outline: none;
+}
