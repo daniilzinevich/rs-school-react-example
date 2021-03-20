@@ -89,3 +89,20 @@
 .Input:focus {
   outline: none;
 }
+
+.Submit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 1em;
+}
+
+.Submit textarea {
+  width: 100%;
+}
+
+.Submit button {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+}
