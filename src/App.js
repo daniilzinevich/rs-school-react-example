@@ -1,14 +1,13 @@
 import React from 'react';
 import Feed from './components/Feed';
-import FeedPure from './components/FeedFC';
+import Chat from './components/Chat';
 import './App.css';
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-// const Names = ["Dmitry G", "Anton E", "Eugene S"];
-const Names = ["/users/dmitry_g", "/users/anton_e", "/users/eugene_s"];
+const Names = ["Dmitry G", "Anton E", "Eugene S"];
 const Messages = [
   "Hello, world",
   "Hello, Dima",
@@ -19,25 +18,41 @@ const Messages = [
 
 function App() {
   const [posts, setPosts] = React.useState([]);
+  const [messages, setMessages] = React.useState([]);
+
   React.useEffect(() => {
-    // setInterval(() => {
-      const count = getRandomInt(3);
-      const members = getRandomInt(3);
-      const result = (posts) =>
-        ([...posts, ...Array.apply(null, {length: count}).map(
-          (_, index) => ({author: Names[index % members], message: Messages[getRandomInt(5)]})
-        )]);
-      setPosts(oldPosts => result(oldPosts));
-    // }, 2000);
+    const count = 5;
+    const members = 3;
+    const result = (posts) =>
+      ([...posts, ...Array.apply(null, {length: count}).map(
+        (_, index) => ({author: Names[index % members], message: Messages[getRandomInt(5)]})
+      )]);
+    setPosts(oldPosts => result(oldPosts));
+    setMessages([
+      {
+        author: Names[0],
+        message: Messages[0],
+      },
+      {
+        author: Names[1],
+        message: Messages[1],
+      },
+      {
+        author: Names[0],
+        message: Messages[2],
+      },
+    ])
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <FeedPure posts={posts} />
-        {/* <Messages messages={messages} /> */}
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <header className="App-header">
+          <Feed posts={posts} />
+        </header>
+      </div>
+      <Chat messages={messages} />
+    </>
   );
 }
 

@@ -55,3 +55,26 @@
   width: 100%;
   text-align: end;
 }
+
+.Chat {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 260px;
+
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.Chat .Message {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 600;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.Text {
+  font-weight: normal;
+  padding: 1em;
+}
