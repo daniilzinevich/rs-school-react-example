@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Post from './Post';
-import { actions } from '../store';
+import { actions } from '../store/posts';
 
 class Feed extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Feed extends React.Component {
 };
 
 function mapStateToProps(state) {
-  return { posts: state.posts }
+  return { posts: state.posts.posts }
 }
 
 function mapDispatchToProps(dispatch) {
