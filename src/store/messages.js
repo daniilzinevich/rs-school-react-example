@@ -18,6 +18,7 @@ const messages = Array.apply(null, {length: count}).map(
 const initialState = {
   users,
   messages,
+  isFetching: false,
 };
 
 export const actions = {
@@ -28,6 +29,22 @@ export const actions = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'FETCH_MESSAGES_START':
+      return {
+        ...state,
+        isFetching: true,
+      }
+    case 'FETCH_MESSAGES_SUCESS':
+      return {
+        ...state,
+        isFetching: false,
+        messages: action.payload,
+      }
+    case 'FETCH_MESSAGES_FAIL':
+      return {
+        ...state,
+        isFetching: false,
+      }
     case 'CREATE_MESSAGE':
       return {
         ...state,

@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Message from './Message';
 import { useSelector, useDispatch } from 'react-redux';
-import { actions } from '../store/posts';
+import { actions } from '../store/messages';
 
 const Chat = () => {
   const messages = useSelector(state => state.messages.messages);
@@ -12,9 +12,12 @@ const Chat = () => {
     [dispatch]
   );
 
+  useEffect(() => {
+    dispatch({ type: 'FETCH_MESSAGES'});
+  }, []);
+
   return <div
     className="Chat"
-    onClick={() => createMessage('Daniil', 'Lorem Ipsum')}
   >
     {messages.map(
       (message, index) => (<Message key={index} {...message} />)
