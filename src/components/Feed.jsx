@@ -15,8 +15,10 @@ class Feed extends React.Component {
     return <div className="Feed">
       <PostArea onSubmit={(author, text) => this.props.dispatch(sendPost(text))}></PostArea>
       <button type="button" onClick={() => this.props.dispatch(fetchPosts())}>Refresh</button>
-      {this.props.isFetching ? (<div className="Post"> Loading posts... </div>) :
-      this.props.posts.map((post, index) => (<Post key={index} {...post} />))}
+      {this.props.isFetching
+        ? (<div className="Post"> Loading posts... </div>)
+        : this.props.posts.map((post, index) => (<Post key={index} {...post} />))
+      }
     </div>;
   }
 };
