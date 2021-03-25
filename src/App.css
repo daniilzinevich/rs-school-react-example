@@ -55,3 +55,54 @@
   width: 100%;
   text-align: end;
 }
+
+.Chat {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 260px;
+
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.Chat .Message {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 600;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.Text {
+  font-weight: normal;
+  padding: 1em;
+}
+
+.Input {
+  width: 80%;
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 1em;
+}
+
+.Input:focus {
+  outline: none;
+}
+
+.Submit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 1em;
+}
+
+.Submit textarea {
+  width: 100%;
+}
+
+.Submit button {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+}

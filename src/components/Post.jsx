@@ -1,5 +1,4 @@
 import React from 'react';
-// import PostWrapper from './PostWrapper';
 
 class Post extends React.Component {
   constructor(props) {
@@ -21,5 +20,4 @@ class Post extends React.Component {
   }
 };
 
-// export default PostWrapper(Post);
 export default Post;
