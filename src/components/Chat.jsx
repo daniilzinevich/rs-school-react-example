@@ -14,7 +14,7 @@ const Chat = () => {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_MESSAGES'});
-  }, []);
+  }, [dispatch]);
 
   return <div
     className="Chat"

@@ -40,11 +40,23 @@ const reducer = (state = initialState, action) => {
         posts: action.payload,
         isFetching: false,
       }
-    case 'CREATE_POST':
+
+    case 'SEND_POST_START':
+      return {
+        ...state,
+        isSending: true,
+      }
+    case 'SEND_POST_SUCESS':
       return {
         ...state,
         posts: [action.payload, ...state.posts],
-      };
+        isSending: false,
+      }
+    case 'SEND_POST_FAIL':
+      return {
+        ...state,
+        isSending: false,
+      }
     default:
       return state;
   }

@@ -1,8 +1,9 @@
+import { getPosts, putPost } from '../api';
+
 export const fetchPosts = () =>
   (dispatch) => {
-    dispatch(fetchPostsStart())
-    fetch('http://localhost:5000/post/6055eac39752541d49895202')
-      .then(result => (result.json()))
+    dispatch(fetchPostsStart());
+    getPosts('6055ead29752541d49895203')
       .then(data => {
         dispatch(fetchPostsSuccess(data.reverse()));
       })
@@ -17,26 +18,15 @@ const fetchPostsFail = () => ({ type: 'FETCH_POSTS_FAIL'});
 export const sendPost = (text) =>
   (dispatch) => {
     dispatch(sendPostStart())
-    fetch(
-      'http://localhost:5000/post/6055eac39752541d49895202',
-      {
-        method: 'PUT',
-        body: JSON.stringify({ message: text }),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      }
-    )
-      .then(result => (result.json()))
+    putPost('6055ead29752541d49895203', text)
       .then(data => {
-        dispatch(createPost(data.author._id, data.message));
+        dispatch(sendPostSuccess(data.author._id, data.message));
       })
       .catch(error => {
         dispatch(sendPostFail());
       })
   };
 const sendPostStart = () => ({ type: 'SEND_POST_START'});
-const sendPostSuccess = (posts) => ({ type: 'SEND_POST_SUCESS', payload: posts});
+const sendPostSuccess = (author, message) => ({ type: 'SEND_POST_SUCESS', payload: { author, message } });
 const sendPostFail = () => ({ type: 'SEND_POST_FAIL'});
 
-const createPost = (author, message) => ({ type: 'CREATE_POST', payload: { author, message } });
