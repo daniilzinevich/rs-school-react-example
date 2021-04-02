@@ -14,7 +14,7 @@ class Post extends React.Component {
     this.counter++;
     return <div className="Post">
       <div>{this.props.author}</div>
-      <p className="Message">{this.props.message}</p>
+      <p className="Message" data-testid="text">{this.props.message}</p>
       <div className="Counter">{this.counter}</div>
     </div>;
   }
