@@ -6,11 +6,11 @@ b ------>
         ^saga   ^saga
 */
 
-const fetchMessagesStart = () => ({ type: 'FETCH_MESSAGES_START'});
-const fetchMessagesSuccess = (posts) => ({ type: 'FETCH_MESSAGES_SUCESS', payload: posts});
-const fetchMessagesFail = () => ({ type: 'FETCH_MESSAGES_FAIL'});
+export const fetchMessagesStart = () => ({ type: 'FETCH_MESSAGES_START'});
+export const fetchMessagesSuccess = (posts) => ({ type: 'FETCH_MESSAGES_SUCESS', payload: posts});
+export const fetchMessagesFail = () => ({ type: 'FETCH_MESSAGES_FAIL'});
 
-function* fetchMessages(action) {
+export function* fetchMessages(action) {
   try {
     yield put(fetchMessagesStart());
     const data = yield call(getMessages, '6055ead29752541d49895203');
