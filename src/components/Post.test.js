@@ -3,6 +3,8 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
+import '@testing-library/jest-dom'
+
 import React from 'react';
 import { shallow } from 'enzyme';
 import Post, { messageLength } from './Post'
@@ -28,5 +30,16 @@ describe('<Post />', () => {
     const wrapper = shallow(<Post message={testMessage} />);
 
     expect(wrapper.find('.Counter').first().text()).toEqual(`length: ${testMessage.length}`)
+  })
+})
+
+import { render } from '@testing-library/react'
+
+
+describe('<Post />', () => {
+  it('display length correctly', () => {
+    const { getByText } = render(<Post message={testMessage} />);
+
+    expect(getByText(`length: ${testMessage.length}`)).toBeInTheDocument();
   })
 })
