@@ -38,8 +38,12 @@ import { render } from '@testing-library/react'
 
 describe('<Post />', () => {
   it('display length correctly', () => {
-    const { getByText } = render(<Post message={testMessage} />);
+    const { getByText, getByTestId } = render(<Post message={testMessage} />);
 
+    // wrong
+    // expect(getByTestId('length').textContent).toEqual(`length: ${testMessage.length}`);
+
+    // right
     expect(getByText(`length: ${testMessage.length}`)).toBeInTheDocument();
   })
 })

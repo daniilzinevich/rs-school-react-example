@@ -21,7 +21,7 @@ class Post extends React.Component {
     return <div className="Post">
       <div>{this.props.author}</div>
       <p className="Message">{this.props.message}</p>
-      <div className="Counter">length: {messageLength(this.props.message)}</div>
+      <div data-testid="length" className="Counter">length: {messageLength(this.props.message)}</div>
       <div className="Counter">{this.counter}</div>
     </div>;
   }
